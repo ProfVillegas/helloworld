@@ -30,14 +30,16 @@ $productos = $stmt->get_result();
   <div class="grid-productos">
     <?php while ($producto = $productos->fetch_assoc()): ?>
       <article class="tarjeta-producto">
-        <img src="uploads/<?= htmlspecialchars($producto["imagen"]); ?>"
-             alt="<?= htmlspecialchars($producto["nombre"]); ?>" class="imagen-producto">
+        <img src="uploads/<?= htmlspecialchars($producto["imagen"] ?: "default.jpg"); ?>"
+             alt="<?= htmlspecialchars($producto["nombre"]); ?>"
+             class="imagen-producto">
         <h3><?= htmlspecialchars($producto["nombre"]); ?></h3>
         <p class="categoria"><?= htmlspecialchars($producto["categoria"]); ?></p>
         <p class="descripcion"><?= nl2br(htmlspecialchars($producto["descripcion"])); ?></p>
         <p class="precio">$<?= number_format($producto["precio"], 2); ?> MXN</p>
         <p class="stock">Stock: <?= htmlspecialchars($producto["stock"]); ?></p>
         <div class="acciones">
+          <a href="carrito_accion.php?accion=agregar&id=<?= $producto["id"];?>" class="btn-secundario">🛒 Agregar</a>
           <a href="editar.php?id=<?= $producto["id"];?>" class="btn-editar">✏️ Editar</a>
           <a href="eliminar.php?id=<?= $producto["id"];?>" class="btn-eliminar" onclick="return confirm('¿Eliminar esta taza?');">🗑️ Eliminar</a>
         </div>

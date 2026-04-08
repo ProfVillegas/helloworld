@@ -111,21 +111,90 @@ main.container {
 
 .campo input,
 .campo textarea {
-  width: 92%;
+  width: 100%;
   padding: 0.75rem;
   border: 1px solid rgba(32, 75, 87, 0.2);
   border-radius: 8px;
   font: inherit;
 }
+
 .btn-primario,
 .btn-secundario,
 .btn-editar,
 .btn-eliminar {
-    margin: 0;
-    padding: 0;
-    line-height: normal;
+  display: inline-block;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--color-blanco);
+  margin-right: 0.5rem;
+  border: none;
+  cursor: pointer;
 }
 
+.tabla-carrito {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+.tabla-carrito th,
+.tabla-carrito td {
+  border: 1px solid var(--color-borde);
+  padding: 0.85rem 0.75rem;
+  text-align: left;
+}
+
+.tabla-carrito thead {
+  background: rgba(25, 123, 189, 0.08);
+}
+
+.producto-resumen {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.producto-resumen img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.carrito-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.carrito-vacio {
+  text-align: center;
+  padding: 2rem;
+  border: 1px dashed var(--color-borde);
+  border-radius: 12px;
+  background: #fcfcfc;
+}
+
+.carrito-acciones {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.accion-cantidad {
+  display: inline-block;
+  padding: 0.4rem 0.65rem;
+  margin: 0 0.25rem;
+  border-radius: 6px;
+  background: rgba(25, 123, 189, 0.15);
+  color: var(--color-texto);
+  text-decoration: none;
+}
+
+.accion-cantidad:hover {
+  background: rgba(25, 123, 189, 0.25);
+}
 
 .btn-primario,
 .btn-secundario,
