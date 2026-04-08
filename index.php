@@ -30,6 +30,8 @@ $productos = $stmt->get_result();
   <div class="grid-productos">
     <?php while ($producto = $productos->fetch_assoc()): ?>
       <article class="tarjeta-producto">
+        <img src="uploads/<?= htmlspecialchars($producto["imagen"]); ?>"
+             alt="<?= htmlspecialchars($producto["nombre"]); ?>" class="imagen-producto">
         <h3><?= htmlspecialchars($producto["nombre"]); ?></h3>
         <p class="categoria"><?= htmlspecialchars($producto["categoria"]); ?></p>
         <p class="descripcion"><?= nl2br(htmlspecialchars($producto["descripcion"])); ?></p>

@@ -13,7 +13,7 @@ unset($_SESSION["error"]);
   <p class="mensaje-error"><?php echo htmlspecialchars($mensaje_error); ?></p>
 <?php endif; ?>
 
-<form method="POST" action="guardar_producto.php" class="form-producto">
+<form method="POST" action="guardar_producto.php" enctype="multipart/form-data" class="form-producto">
   <div class="campo">
     <label>Nombre *</label>
     <input type="text" name="nombre" required>
@@ -34,8 +34,31 @@ unset($_SESSION["error"]);
     <label>Stock</label>
     <input type="number" name="stock" value="0" min="0">
   </div>
-  <button type="submit" class="btn-primario">Guardar producto</button>
+  <div class="campo">
+    <label>Imagen del producto</label>
+    <input type="file" name="imagen" id="inputImagen" accept="image/*" onchange="previsualizarImagen(this)">
+    <div id="contenedor-preview" style="display:none; margin-top:10px;">
+      <img id="preview-imagen" style="max-width:200px; border-radius:8px;">
+    </div>
+  </div>
+  <button type="submit" class="btn-primario">💾 Guardar producto</button>
   <a href="index.php" class="btn-secundario">Cancelar</a>
 </form>
+
+<script>
+function previsualizarImagen(input) {
+  const contenedor = document.getElementById("contenedor-preview");
+  const preview    = document.getElementById("preview-imagen");
+
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      preview.src = e.target.result;
+      contenedor.style.display = "block";
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+</script>
 
 <?php require_once "includes/footer.php"; ?>
